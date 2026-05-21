@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="fr" data-theme="light">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Todo App Pro</title>
+
+    <!-- Évite l'erreur 404 pour le favicon -->
+    <link rel="icon" href="data:,">
+
+    <!-- Connexion anticipée aux serveurs de polices Google -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <!-- Police Poppins Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
+        rel="stylesheet">
+
+    <!-- Icones Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+    <!-- CSS personnalisé -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
+</head>
+
+<body>
+    <!-- Auth Overlay -->
+    <div id="auth-overlay" class="auth-overlay">
+        <div class="auth-box">
+            <h2 id="auth-title">Connexion</h2>
+            <input type="text" id="auth-username" placeholder="Nom d'utilisateur" autocomplete="username">
+            <input type="password" id="auth-password" placeholder="Mot de passe" autocomplete="current-password">
+            <button class="btn-primary" onclick="submitAuth()">Valider</button>
+            <p class="auth-switch">Pas de compte ? <a href="#" onclick="toggleAuthMode()">S'inscrire</a></p>
+        </div>
+    </div>
+
+    <!-- App Layout (structure visuelle principale de l'application) -->
+    <div class="app-layout" id="app-layout" style="display: none;">
+        <!-- Sidebar -->
+        <aside class="sidebar">
+            <div class="sidebar-header">
+                <h2><i class="fas fa-check-double"></i> TodoPro</h2>
+            </div>
+
+            <div class="user-profile">
+                <i class="fas fa-user-circle profile-icon"></i>
+                <span id="current-username" class="username-display">Utilisateur</span>
+                <button class="btn-icon" onclick="logout()" title="Déconnexion"><i
+                        class="fas fa-sign-out-alt"></i></button>
+            </div>
+
+            <hr class="sidebar-divider">
+
+            <div class="sidebar-filters">
+                <h3>Filtres</h3>
+                <button class="filter-btn active" onclick="setFilter('all')"><i class="fas fa-list"></i> Toutes les
+                    tâches</button>
+                <button class="filter-btn" onclick="setFilter('pending')"><i class="fas fa-hourglass-half"></i> En
+                    cours</button>
+                <button class="filter-btn" onclick="setFilter('done')"><i class="fas fa-check-circle"></i>
+                    Terminées</button>
+            </div>
+
+            <div class="sidebar-footer">
+                <div class="theme-toggle">
+                    <label class="switch">
+                        <input type="checkbox" id="dark-mode-toggle" onchange="toggleDarkMode()">
+                        <span class="slider round"></span>
+                    </label>
+                    <span class="theme-label">Mode Sombre</span>
+                </div>
+            </div>
+        </aside>
+
+        <!-- Main Content -->
+        <main class="main-content">
+            <div class="container">
+                <div class="header">
+                    <h1>Bonjour, <span id="header-username"></span> !</h1>
+                    <p>Voici l'état de tes tâches aujourd'hui.</p>
+                </div>
+
+                <div class="stats-bar">
+                    <div class="stat">
+                        <div class="stat-value" id="total-count">0</div>
+                        <div class="stat-label">Total</div>
+                    </div>
+                    <div class="progress-container">
+                        <div class="progress-bar">
+                            <div class="progress-fill" id="progress-fill"></div>
+                        </div>
+                        <div class="progress-text" id="progress-text">0% complété</div>
+                    </div>
+                    <div class="stat">
+                        <div class="stat-value" id="done-count">0</div>
+                        <div class="stat-label">Faites</div>
+                    </div>
+                </div>
+
+                <div class="search-section">
+                    <div class="search-wrapper">
+                        <i class="fas fa-search" id="search-icon"></i>
+                        <input type="text" id="search-input" placeholder="Rechercher une tâche..." autocomplete="off">
+                        <button class="search-clear" id="search-clear" onclick="clearSearch()" style="display: none;">
+                            <i class="fas fa-times"></i>
+                        </button>
+                    </div>
+                </div>
+
+                <div class="input-section">
+                    <div class="input-wrapper">
+                        <i class="fas fa-plus" id="input-icon"></i>
+                        <input type="text" id="task-input" placeholder="Ajouter une nouvelle tâche..."
+                            autocomplete="off">
+                    </div>
+                    <div class="task-options">
+                        <input type="date" id="task-deadline" class="input-date" title="Date limite">
+                        <select id="task-priority" class="input-select" title="Priorité">
+                            <option value="low">🟢 Basse</option>
+                            <option value="medium" selected>🟡 Moyenne</option>
+                            <option value="high">🔴 Haute</option>
+                        </select>
+                        <button class="btn-cancel" id="btn-cancel-edit" onclick="cancelEdit()" style="display: none;"
+                            title="Annuler">
+                            <i class="fas fa-times"></i>
+                        </button>
+                        <button class="btn-add" id="btn-submit-task" onclick="submitTask()">
+                            <i class="fas fa-paper-plane"></i>
+                        </button>
+                    </div>
+                </div>
+
+                <ul class="task-list" id="task-list"></ul>
+            </div>
+        </main>
+    </div>
+
+    <div class="toast-container" id="toast-container"></div>
+
+    <!-- JavaScript personnalisé -->
+    <script src="{{ url_for('static', filename='js/logique.js') }}"></script>
+</body>
+
+</html>
