@@ -10,13 +10,16 @@ Environ/
 ├── models/
 │   ├── __init__.py          # Initialisation du module models
 │   └── database.py          # Gestion de la base de données (requêtes SQLite)
+
 ├── static/
 │   ├── css/
 │   │   └── styles.css       # Design moderne, responsive et animations fluides
 │   └── js/
 │       └── logique.js       # Logique dynamique, appels AJAX (fetch) et toasts
+
 ├── templates/
 │   └── index.html           # Page principale de l'application (Interface client)
+
 ├── .env/                    # Environnement virtuel Python (à exclure sur Git)
 ├── app.py                   # Serveur principal Flask & Routes de l'API
 ├── todo.db                  # Base de données locale SQLite (générée automatiquement)
