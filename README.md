@@ -8,31 +8,31 @@ frontend dynamique développée en **HTML5/CSS3** et **Vanilla JavaScript**.
 
 Environ/
 ├── models/
-│   ├── __init__.py          # Initialisation du module models
+│   ├── __init__.py            # Initialisation du module models
 
-│   └── database.py          # Gestion de la base de données (requêtes SQLite)
+│   └── database.py            # Gestion de la base de données (requêtes SQLite)
 
 ├── static/
 │   ├── css/
-│   │   └── styles.css       # Design moderne, responsive et animations fluides
-│   └── js/
+│   │   └── styles.css         # Design moderne, responsive et animations fluides
 
-│       └── logique.js       # Logique dynamique, appels AJAX (fetch) et toasts
+│   └── js/
+│       └── logique.js         # Logique dynamique, appels AJAX (fetch) et toasts
 
 ├── templates/
-│   └── index.html           # Page principale de l'application (Interface client)
+│   └── index.html             # Page principale de l'application (Interface client)
 
-├── .env/                    # Environnement virtuel Python (à exclure sur Git)
+├── .env/                      # Environnement virtuel Python (à exclure sur Git)
 
-├── app.py                   # Serveur principal Flask & Routes de l'API
+├── app.py                     # Serveur principal Flask & Routes de l'API
 
-├── todo.db                  # Base de données locale SQLite (générée automatiquement)
+├── todo.db                    # Base de données locale SQLite (générée automatiquement)
 
-├── .gitignore               # Fichiers à ignorer par Git (comme .env et todo.db)
+├── .gitignore                 # Fichiers à ignorer par Git (comme .env et todo.db)
 
-├── CODE_DOCUMENTATION.md    # Documentation complète pour le développement
+├── CODE_DOCUMENTATION.md      # Documentation complète pour le développement
 
-└── README.md                # Ce fichier d'introduction et guide complet
+└── README.md                  # Ce fichier d'introduction et guide complet
 
 
 
