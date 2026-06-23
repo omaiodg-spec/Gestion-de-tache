@@ -1,0 +1,5 @@
+.env
+todo.db
+Environ/
+__pycache__/
+*.pyc
